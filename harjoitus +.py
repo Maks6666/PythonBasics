@@ -74,10 +74,10 @@
 # if x == y:
 #    print("You are right!") #If answer is right, programm prints some text 
 # elif x != y:
-#    print("et ole oikeassa") #If answer is incorrect, programm prints some text  
+#    print("You are wrong") #If answer is incorrect, programm prints some text  
 # if x < 10:
-#    print("lian pieni") #If answer is incorrect and too small, programm prints some text  
+#    print("Its too small") #If answer is incorrect and too small, programm prints some text  
 # elif x > 20:
-#    print("lian suuri") #If answer is incorrect and too big, programm prints some text  
+#    print("Its too big") #If answer is incorrect and too big, programm prints some text  
 
 
