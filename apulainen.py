@@ -1,16 +1,17 @@
-import tkinter as tk
-import csv
+#Programm "Santa's assistance" gives to user information about avaliable or not Christmass presents using TKinter UI and importing CSV files  
+import tkinter as tk #Importing TKiner
+import csv #Importing CSV to read file 
 #columns in csv file(?) 1st - group of items, 2nd - item_type, 3d - price, 4th - amount
-class Item:
+class Item: #Creating class, which contains items information
     def __init__(self, group, item_type, price, amount):
         self.group = group
         self.item_type = item_type
         self.price = price
         self.amount = amount
 
-items = []
+items = [] #Creating a list for all items 
 
-with open('lahjadata.csv', newline='') as csvfile:
+with open('lahjadata.csv', newline='') as csvfile: #Opening CSV file and grouping it 
     csvreader = csv.reader(csvfile)
     for row in csvreader:
         group = row[0]
@@ -19,8 +20,10 @@ with open('lahjadata.csv', newline='') as csvfile:
         amount = int(row[3])
         item = Item(group, item_type, price, amount)
         items.append(item)
-        
-def print_items_with_positive_amount():
+
+
+#Creating a function for available items list
+def print_items_with_positive_amount(): 
     global items
     print('------ Available items -------')
     text_area.delete("1.0", "end")
@@ -32,7 +35,7 @@ def print_items_with_positive_amount():
     print('------End of list-------')
     
     
-
+#Creating a function forprice of available items list
 def print_average_prices_by_group():
     global items
     print('------ Average Prices by Group -------')
@@ -54,7 +57,7 @@ def print_average_prices_by_group():
         
     print('------ End of list -------')
 
-
+#Creating a function for not  available items list
 def print_items_with_not_positive_amount():
     global items
     print('------ Not available items -------')
@@ -80,12 +83,12 @@ text_area = tk.Text(root)
 text_area.pack(fill=tk.BOTH, expand=True)
 
 
-# Create three buttons
+# Create three buttons using TKiner 
 button_available = tk.Button(root, text="Available items", command=print_items_with_positive_amount)
 button_not_available = tk.Button(root, text="Not available items",command=print_items_with_not_positive_amount)
 button_average_price = tk.Button(root, text="Average price",command=print_average_prices_by_group)
 
-# Add the buttons to the window
+# Add the buttons to the window using TKiner 
 button_available.pack(side=tk.LEFT, padx=10, pady=10)
 button_not_available.pack(side=tk.LEFT, padx=10, pady=10)
 button_average_price.pack(side=tk.LEFT, padx=10, pady=10)
