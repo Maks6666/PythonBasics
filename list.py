@@ -28,32 +28,33 @@ def ap2():
 
 
 
-def delate():
-    list1 = " ".join(list)
-    print(list1)
+def delete_elements():
+    my_list = ["ABCD", "EFGH", "KLMO", "OPRS"]
 
-
-    x = int(input("How many elements do u want to delate? "))
-    if x == 0:
-        print(f"Thank you, {list1} is perfect")
-    elif x >= 4:
-        print("Sorry, it's too strict :(")
-    else:
-
-        while len(list) > x:
-            delated_element = input("What element do u want do delate? ")
-            if delated_element in list1:
-                
-                list.remove(delated_element)
-                list1 = " ".join(list)
-                print(list1)
-            
+    while True:
+        try:
+            x = int(input("Сколько элементов вы хотите удалить? Введите число: "))
+            if x <= 0:
+                print("Введите положительное число.")
+            elif x >= len(my_list):
+                print("Слишком большое число. Введите число меньше или равное", len(my_list) - 1)
             else:
-                print(f"Element is not in list, try again from {list1}")
+                for _ in range(x):
+                    deleted_element = input("Введите элемент для удаления: ")
+                    if deleted_element in my_list:
+                        my_list.remove(deleted_element)
+                    else:
+                        print("Элемент не найден в списке. Попробуйте снова.")
                 
-            
-        else:
-            print("Limit")
+                print("Новый список после удаления:", my_list)
+
+        except ValueError:
+            print("Ошибка: Введите целое число.")
+        except KeyboardInterrupt:
+            print("\nПрограмма завершена.")
+            break
+
+delete_elements()
 
 
 
