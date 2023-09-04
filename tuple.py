@@ -79,3 +79,47 @@
 # for person in students_info:
 #     student_name, mark_list, average_mark = person
 #     print(f"Имя студента: {student_name}, Оценки студента: {mark_list}, Средняя оценка: {average_mark}")
+
+
+#transactions = [
+#     ("расход", 500, "Покупка продуктов в магазине"),
+#     ("доход", 1000, "Зарплата"),
+#     ("расход", 200, "Ужин в ресторане"),
+#     ("доход", 800, "Подработка"),
+#     ("расход", 50, "Кино"),
+# ]
+
+
+
+# def balance():
+#     summa = 0
+#     for transaction in transactions:
+#         if transaction[0] == "расход":
+#             summa -= transaction[1]
+#         elif transaction[0] == "доход":
+#             summa += transaction[1]
+#     print(summa)
+
+
+
+# def expence():
+#     expence_list = []
+#     for transaction in transactions:
+#         if transaction[0] == "расход":
+#             expence_list.append(transaction)
+
+    
+#     print(expence_list)
+    
+
+# def limit():
+    
+#     limit_number = int(input("Input the limit"))
+#     limit_list = []
+#     for transaction in transactions:
+#         if transaction[1] > limit_number:
+#             limit_list.append(transaction)
+#     print(limit_list)
+
+# limit()
+
