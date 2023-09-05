@@ -1,0 +1,131 @@
+import random
+films = {
+    1: {
+        "title": "Star Wars",
+        "year": 1977,
+        "genre": "Fantasy",
+        "rating": 8.7,
+    },
+    2: {
+        "title": "Interstallar",
+        "year": 2014,
+        "genre": "Scientific fantasy",
+        "rating": 8.6,
+    },
+    # others...
+}
+
+def appending():
+    question = input("Whould you like to add some films? ")
+    if question == "Yes" or "yes":
+        ammount_of_films = int(input("How many films do you want to add? "))
+
+        for i in range (ammount_of_films):
+
+
+            
+            film_id = random.randint(1, 100)
+            films [film_id] = {}
+
+            film_name = input(f"Input {i + 1}st film name ")
+            films[film_id] ["title"] = film_name
+
+            film_year = int(input(f"Input the year of production of {i +1}st film: "))
+            films[film_id] ["year:" ] = film_year
+
+            film_genre = input(f"Input {i + 1}st film genre: ")
+            films [film_id] ["genre: "] = film_year
+
+            film_rating = float(input(f"How would you rate {i + 1}st film? "))
+            films [film_id] ["rating: "] = film_rating
+
+        print(films)
+    else:
+        print("OK")
+
+
+def daleting():
+   
+        ammount_of_films = int(input("How many films do you want to dalete? "))
+        if ammount_of_films < len(films):
+            for i in range(ammount_of_films):
+
+                id_to_delate = int(input(f"Input id of {i + 1}st film you want to delate? "))
+                if id_to_delate in films:
+                    del films[id_to_delate]
+                    print(films)
+                else:
+                    print("ID is missning")
+        else:
+            print("Sorry, it's too much:(")
+
+def change_info():
+    id_to_change = int(input("Input ID of film, you want to change: "))
+    if id_to_change in films:
+        info_to_change = input("What kind of info you want to change? ")
+        if info_to_change == "title":
+            new_title = input("Input new title: ")
+            films [id_to_change] [info_to_change ]= new_title
+            print(films)
+        
+        elif info_to_change == "year":
+            new_year = int(input("Input new year: "))
+            films [id_to_change] [info_to_change ]= new_year
+            print(films)
+
+
+        elif info_to_change == "genre":
+            new_genre = input("Input new genre: ")
+            films [id_to_change] [info_to_change ]= new_genre
+            print(films)
+
+
+        elif info_to_change == "rating":
+            new_rating = float(input("Input new rating: "))
+            films [id_to_change] [info_to_change ]= new_rating
+            print(films)
+        else:
+            print("Parametr is missing")
+    else:
+        print("ID is missing")
+
+
+def view_films():
+    if films:
+        print("Films in data base:")
+        for film_id, film in films.items():
+            print(f"ID: {film_id}")
+            for key, value in film.items():
+                print(f"{key}: {value}")
+            print()
+    else:
+        print("Data base is empty")
+
+# appending()
+# daleting()
+# change_info()
+# view_films()
+
+while True:
+    print("\nМеnu: ")
+    print("1. Append film")
+    print("2. Dalete film")
+    print("3. Change film info")
+    print("4.Show list of films")
+    print("5. Quit")
+    
+    choize = input("Make your choize: ")
+    if choize == "1":
+        appending()
+    elif choize == "2":
+        daleting()
+    elif choize == "3":
+        change_info()
+    elif choize == "4":
+        view_films()
+    elif choize == "5":
+        print("Programm is stopped, thanks for using:)")
+        break
+    else:
+        print("Command is wrong, try again")
+    
