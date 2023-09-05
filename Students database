@@ -1,0 +1,167 @@
+group_list = ["A", "B", "C", "D", "E"]
+students = {1290: 
+            {"name": "maks", 
+             "group": "A", 
+             "courses": ["Math", "IT", "Language", "History"], 
+             "marks": [10, 10, 10, 10] }, 
+             1901: 
+             {"name": "karl", 
+             "group": "D", 
+             "courses": ["Math", "IT", "Language", "History"], 
+             "marks": [10, 10, 10, 10] },
+            1945: 
+             {"name": "rudolph", 
+             "group": "C", 
+             "courses": ["Math", "IT", "Language", "History"], 
+             "marks": [10, 10, 10, 10] },       
+            }
+
+def appending():
+    
+    student_id = int(input("Input student ID: "))
+
+    if student_id > 9999:
+        print("Incorrect ID")
+    elif student_id < 999:
+        print("Incorrect ID")
+    else:
+        
+        students[student_id] = {}
+        print(students)
+
+        student_name = input("Input students name: ")
+        students[student_id]["name"] = student_name
+
+        student_group = input("Input students group: ")
+        if student_group in group_list:
+            students[student_id]["group"] = student_group
+        else: 
+            print("Group does not exist")
+
+        student_courses =[]
+        x = int(input("How many subjects student has? "))
+        for i in range(x):
+
+            course = input(f"Input the {i + 1}nd subject: ")
+            student_courses.append(course)
+
+        students[student_id]["courses"] = student_courses
+
+        student_marks =[]
+        y = int(input("How many marks student has? "))
+        for i in range(y):
+
+            mark = int(input(f"Input the {i + 1} mark: "))
+            student_marks.append(mark)
+
+        students[student_id]["marks"] = student_marks
+
+        print(students)
+
+
+
+
+def delate_student():
+    delate_studens_ammount = int(input("How many students do u wanna to delate? "))
+    for i in range(delate_studens_ammount):
+        id_to_delate = int(input(f"Give {i + 1}st ID to delate "))
+        if id_to_delate in students:
+                del students [id_to_delate]
+                
+                print(f"Student with ID {id_to_delate} is delated")
+                print(students)
+        else:
+            print("This ID does not exist")
+            print(students)
+   
+
+def change_student_info():
+            choize = "yes"
+            while choize.lower() != "no":
+                print(students)
+                ammount_student_to_change = int(input("How many students info do you like to change? "))
+                for i in range(ammount_student_to_change):
+                    id_to_change = int(input(f"Input {i + 1}st  ID to change "))
+                    if id_to_change in students:
+                        
+                        info_to_change = input("What do u wanna to change? ")
+                        
+                        if info_to_change == "courses":
+                            new_course_list = []
+                            new_course_ammount = int(input("You've created new course list. How many courses do u wanna to add? "))
+                            for i in range(new_course_ammount):
+                                new_course = input(f"Input {i + 1}th new course")
+                                new_course_list.append(new_course)
+                            students[info_to_change] = new_course_list
+                            print(students)
+                        elif info_to_change == "marks":
+                            new_marks_list = []
+                            new_marks_ammount = int(input("You've created new mark list. How many marks do u want to add? "))
+                            for i in range(new_marks_ammount):
+                                new_mark = int(input(f"Input {i + 1}th new mark"))
+                                new_marks_list.append(new_mark)
+                            students[info_to_change] = new_marks_list
+                            print(students)
+
+                            
+
+                        elif info_to_change == "name":
+                            new_name = input("Input new name: ")
+                            
+                            students[id_to_change][info_to_change] = new_name
+
+                        elif info_to_change == "group":
+                            new_group = input("Input new group: ")
+                            
+                            students[id_to_change][info_to_change] = new_group
+                        
+                    
+                        else: 
+                            print("Parametr does not exist. ")
+                    
+
+                    else:
+                         print("ID does not exist")
+                choize = input("Would you like to change sothing else? ")
+                print("\nDatabase updated succesfully")
+                print(students)
+
+def view_info():
+
+
+    if students:
+        print("Students in data base:")
+        for student_id, student in students.items(): #Student_id - key, student - value of studentS dictiobary / Таким образом мы придаем значение Student_id каждому айди в словаре "students",
+            #а вот student - это значение ключа Student_id, которое в данном контексте представляет из себя словарь 
+            print(f"ID: {student_id}")
+            for key, value in student.items(): #Programm cheks new dictionary - student, which was assigned by upper function
+                print(f"{key}: {value}")
+            print()
+    else:
+        print("Data base is empty") 
+
+
+
+while True:
+    print("\n Menu:")
+    print("1. Appending.")
+    print("2. Delating.")
+    print("3. Changing students info.")
+    print("4. View database.")
+    print("5. Quit.")
+
+    to_choose = input("Make your choize: ")
+    if to_choose == "1":
+        appending()
+    elif to_choose == "2":
+        delate_student()
+    elif to_choose == "3":
+        change_student_info()
+    elif to_choose == "4":
+        view_info()
+    elif to_choose== "5":
+        print("Programm is stopped, thanks for using:)")
+        break
+            
+    else:
+        print("Command is wrong, try again")
